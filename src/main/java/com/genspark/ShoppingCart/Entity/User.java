@@ -3,6 +3,7 @@ package com.genspark.ShoppingCart.Entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -12,6 +13,8 @@ public class User {
     private int id;
     private String username;
     private String password;
+    @OneToOne
+    private Cart cart;
 
     public User() {}
 
@@ -42,6 +45,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @Override
