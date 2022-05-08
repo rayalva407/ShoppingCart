@@ -9,7 +9,7 @@ public class Cart {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToMany
@@ -18,9 +18,31 @@ public class Cart {
     private float totalPrice;
 
     public Cart() {
+        totalPrice = 0;
     }
 
-    public Cart(int id) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", products=" + products +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }

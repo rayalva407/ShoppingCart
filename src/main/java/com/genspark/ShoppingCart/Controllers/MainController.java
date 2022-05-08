@@ -1,7 +1,9 @@
 package com.genspark.ShoppingCart.Controllers;
 
 import com.genspark.ShoppingCart.Entity.Product;
+import com.genspark.ShoppingCart.Entity.User;
 import com.genspark.ShoppingCart.Service.ProductService;
+import com.genspark.ShoppingCart.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,13 @@ public class MainController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/users/{username}")
+    public User addUser(@PathVariable String username) {
+        return this.userService.addUser(username);
+    }
 
     @GetMapping("/")
     public String home() {
